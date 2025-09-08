@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f9fafb;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+  }
+  .card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 500px;
+    text-align: center;
+  }
+  button, .download-btn {
+    margin-top: 12px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  button:hover, .download-btn:hover {
+    background: #1d4ed8;
+  }
+  .video-container {
+    margin-top: 20px;
+  }
+  

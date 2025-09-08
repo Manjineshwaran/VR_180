@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: vr180-backend
+    env: python
+    plan: starter
+    buildCommand: |
+      cd backend
+      pip install -r requirements.txt
+      python -c "from src.midas_depth import Midas, ModelType; Midas(ModelType.MIDAS_SMALL)"
+    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHONPATH
+        value: /opt/render/project/src/backend
+      - key: PORT
+        value: 10000
+      - key: REACT_APP_BACKEND_URL
+        value: https://vr180-backend.onrender.com
+    disk:
+      name: vr180-storage
+      mountPath: /opt/render/project/src/backend/storage
+      sizeGB: 10
+
+  - type: web
+    name: vr180-frontend
+    env: static
+    buildCommand: |
+      cd frontend
+      npm install
+      npm run build
+    staticPublishPath: ./frontend/build
+    envVars:
+      - key: REACT_APP_BACKEND_URL
+        value: https://vr180-backend.onrender.com
