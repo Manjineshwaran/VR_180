@@ -6,6 +6,7 @@ import uuid
 from pathlib import Path
 import shutil
 import sys
+import cv2
 
 # Add src directory to path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -101,10 +102,57 @@ def main():
         
         add_audio = st.checkbox("Include Audio", value=True)
         
-        process_button = st.button("Process Video", type="primary")
+        process_button = st.button("Process Video", type="primary", 
+                                 disabled=uploaded_file is None)
     
     # Main content area
     col1, col2 = st.columns(2)
+    
+    if uploaded_file is not None:
+        with st.spinner('Processing video...'):
+            try:
+                # Save the uploaded file
+                input_path = save_uploaded_file(uploaded_file)
+                if not input_path or not os.path.exists(input_path):
+                    st.error("Failed to save the uploaded file. Please try again.")
+                    return
+                    
+                # Verify the video file
+                cap = cv2.VideoCapture(input_path)
+                if not cap.isOpened() or not cap.read()[0]:
+                    st.error("Error: Could not read the video file. The file might be corrupted or in an unsupported format.")
+                    cap.release()
+                    return
+                cap.release()
+                
+                # Process the video
+                if process_button:
+                    with st.spinner('Processing video... This may take a while...'):
+                        output_path = process_video(
+                            input_path, 
+                            mode=processing_mode.lower().replace(" ", ""),
+                            add_audio=add_audio
+                        )
+                        
+                        if output_path and os.path.exists(output_path):
+                            st.success("Video processing completed successfully!")
+                            st.video(output_path)
+                            
+                            # Add download button
+                            with open(output_path, 'rb') as f:
+                                st.download_button(
+                                    label="Download Processed Video",
+                                    data=f,
+                                    file_name=os.path.basename(output_path),
+                                    mime="video/mp4"
+                                )
+                        else:
+                            st.error("Failed to process the video. Please check the logs for more details.")
+            except Exception as e:
+                st.error(f"An error occurred: {str(e)}")
+                st.error("Please check the console for more details.")
+                import traceback
+                traceback.print_exc()
     
     with col1:
         st.subheader("Original Video")
