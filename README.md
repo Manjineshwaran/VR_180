@@ -12,29 +12,15 @@ This project implements a VR 180-degree video processing pipeline that takes inp
 *Depth estimation using MiDaS, showing the depth information of the scene.*
 
 ### 3. Left and Right Views
-<div style="display: flex; justify-content: space-around; margin: 20px 0;">
-    <div style="text-align: center;">
-        <img src="Images/3left_frame.png" width="400" alt="Left View">
-        <p>Left View</p>
-    </div>
-    <div style="text-align: center;">
-        <img src="Images/3rightframe.png" width="400" alt="Right View">
-        <p>Right View</p>
-    </div>
-</div>
+| Left View | Right View |
+|-----------|------------|
+| ![Left View](Images/3left_frame.png) | ![Right View](Images/3rightframe.png) |
 *Stereo pair generated for the VR experience, showing the left and right eye views.*
 
 ### 4. Projected Views
-<div style="display: flex; justify-content: space-around; margin: 20px 0;">
-    <div style="text-align: center;">
-        <img src="Images/4left_projection.png" width="400" alt="Left Projection">
-        <p>Left Projection</p>
-    </div>
-    <div style="text-align: center;">
-        <img src="Images/4right_projection.png" width="400" alt="Right Projection">
-        <p>Right Projection</p>
-    </div>
-</div>
+| Left Projection | Right Projection |
+|-----------------|------------------|
+| ![Left Projection](Images/4left_projection.png) | ![Right Projection](Images/4right_projection.png) |
 *The projected views after applying the VR transformation to each eye's perspective.*
 
 ### 5. Final Stitched Output
