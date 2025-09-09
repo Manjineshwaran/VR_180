@@ -1,5 +1,16 @@
 # VR 180 Degree (Monorepo)
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.88.0-009688)
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.5%2B-orange)
+![FFmpeg](https://img.shields.io/badge/FFmpeg-5.1%2B-007808)
+![Open3D](https://img.shields.io/badge/Open3D-0.17.0-FF6F00)
+![MiDaS](https://img.shields.io/badge/MiDaS-3.1-00B0D8)
+![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933)
+![NumPy](https://img.shields.io/badge/NumPy-1.23%2B-013243)
+
+
 ## Project Overview
 This project implements a VR 180-degree video processing pipeline that takes input video and processes it to create an immersive 180-degree VR experience. The following images demonstrate the processing pipeline:
 
@@ -85,6 +96,5 @@ npm start
 ## Notes
 - Outputs and temporary data are ignored by git.
 - For production, serve frontend behind a reverse proxy to backend `/hls` and `/hls_final`.
-# VR_180
-# VR_180
-# VR_180
+## VR_180
+
